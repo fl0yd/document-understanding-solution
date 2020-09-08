@@ -123,7 +123,7 @@ function Document({ currentPageNumber, dispatch, id, document, pageTitle, search
     const tables = getDocumentTables(document)
     const lines = getDocumentLines(document)
     const entities = getDocumentEntityPairs(document, COMPREHEND_SERVICE)
-    //const medicalEntities = getDocumentEntityPairs(document, COMPREHEND_MEDICAL_SERVICE)
+    const medicalEntities = getDocumentEntityPairs(document, COMPREHEND_MEDICAL_SERVICE)
     return { pairs, tables, lines, entities , medicalEntities }
     // eslint-disable-next-line
 
@@ -135,7 +135,7 @@ function Document({ currentPageNumber, dispatch, id, document, pageTitle, search
     const pairs = docData.pairs.filter(d => d.pageNumber === currentPageNumber)
     const tables = docData.tables.filter(d => d.pageNumber === currentPageNumber)
     const entities = docData.entities.filter(d => d.pageNumber === currentPageNumber)
-    //const medicalEntities = docData.medicalEntities.filter(d => d.pageNumber === currentPageNumber)
+    const medicalEntities = docData.medicalEntities.filter(d => d.pageNumber === currentPageNumber)
     return { lines, pairs, tables , entities , medicalEntities }
     // eslint-disable-next-line
   }, [document, document.textractResponse,document.comprehendMedicalResponse, currentPageNumber, docData.pairs, docData.entities , docData.medicalEntities , docData.tables])
@@ -313,7 +313,7 @@ function Document({ currentPageNumber, dispatch, id, document, pageTitle, search
                 { id: 'kv', title: `Key-Value Pairs` },
                 { id: 'tables', title: `Tables` },
                 { id: 'entities', title: `Entities` },
-                { id: 'medical_entities', title: `Medical Entities` },
+                //{ id: 'medical_entities', title: `Medical Entities` },
               ]}
             />
 
